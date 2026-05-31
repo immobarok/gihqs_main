@@ -42,6 +42,13 @@ interface LearningColumn {
   sections: LearningSection[];
 }
 
+interface CertificationItem {
+  code: string;
+  title: string;
+  exploreHref: string;
+  storyGuideHref: string;
+}
+
 interface NavItem {
   label: string;
   href?: string;
@@ -99,6 +106,27 @@ const learningColumns: LearningColumn[] = [
 const learningVerticalBarClass = "absolute left-0 top-0 bottom-0 hidden w-px bg-gradient-to-b from-transparent via-[#c0a062] to-transparent md:block";
 const learningHorizontalBarClass = "absolute -top-3 left-0 h-px w-full bg-gradient-to-r from-transparent via-[#c0a062]/50 to-transparent";
 
+const certifications: CertificationItem[] = [
+  {
+    code: "AIHQSP",
+    title: "AI Healthcare Quality & Safety Professional",
+    exploreHref: "/certifications/aihqsp",
+    storyGuideHref: "/certifications/aihqsp/story-guide",
+  },
+  {
+    code: "CHSCP",
+    title: "Healthcare Standards & Compliance Professional",
+    exploreHref: "/certifications/chscp",
+    storyGuideHref: "/certifications/chscp/story-guide",
+  },
+  {
+    code: "CCDIP",
+    title: "Certified Clinical Documentation Improvement Professional",
+    exploreHref: "/certifications/ccdip",
+    storyGuideHref: "/certifications/ccdip/story-guide",
+  },
+];
+
 const navItems: NavItem[] = [
   {
     label: "CERTIFICATIONS",
@@ -114,15 +142,15 @@ const navItems: NavItem[] = [
   {
     label: "ACCREDITATION",
     children: [
-      { title: "Standards",      href: "/accreditation/standards", description: "International quality standards" },
-      { title: "Survey Process", href: "/accreditation/survey",    description: "Understanding the accreditation journey" },
+      { title: "Overview", href: "/accreditation/overview" },
+      { title: "Apply for Accreditation", href: "/accreditation/apply" },
     ],
   },
   {
     label: "ADVISORY",
     children: [
-      { title: "Consulting",       href: "/advisory/consulting", description: "Expert guidance for organizations" },
-      { title: "Risk Management",  href: "/advisory/risk",       description: "Proactive safety solutions" },
+      { title: "Advisory Services", href: "/advisory/services" },
+      { title: "Request Advisory Consultation", href: "/advisory/request-consultation" },
     ],
   },
   { label: "MEMBERSHIP", href: "/membership" },
@@ -199,7 +227,7 @@ const triggerClass = cn(
 
 export function GIHQSNavbar() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white">
+    <header className="sticky top-0 z-50 w-full">
       <div className="mx-auto flex h-28.5 container items-center justify-between px-4 sm:px-6 lg:px-8">
 
         <div className="shrink-0">
@@ -210,12 +238,58 @@ export function GIHQSNavbar() {
         <NavigationMenu className="hidden lg:flex" viewport={false}>
           <NavigationMenuList className="gap-1">
             {navItems.map((item) =>
-              item.label === "LEARNING" ? (
+              item.label === "CERTIFICATIONS" ? (
                 <NavigationMenuItem key={item.label} className="relative">
                   <NavigationMenuTrigger className={triggerClass}>
                     {item.label}
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="absolute left-1/2 top-full mt-2 w-[min(56rem,calc(100vw-2rem))]! max-w-none! -translate-x-1/2 rounded-2xl border border-[#e8dcc2] bg-white p-6 shadow-[0_18px_40px_rgba(26,95,74,0.12)]">
+                  <NavigationMenuContent
+                    className="absolute left-1/2 top-full mt-2 -translate-x-1/2 rounded-2xl bg-white p-0 shadow-[0_18px_40px_rgba(26,95,74,0.12)]"
+                    style={{ width: "525px", maxWidth: "calc(100vw - 2rem)" }}
+                  >
+                    <div className="relative pl-14 pr-2">
+                      <div className="absolute left-6 top-0 bottom-0 w-[0.3px] bg-linear-to-b from-transparent via-[#c0a062]/70 to-transparent" />
+
+                      {certifications.map((cert, index) => (
+                        <section
+                          key={cert.code}
+                          className={cn(
+                            "pl-0 pr-1 py-6",
+                            index > 0 && "relative"
+                          )}
+                        >
+                          {index > 0 && (
+                            <div className="absolute -top-3 left-0 h-px w-full bg-gradient-to-r from-transparent via-[#c0a062]/50 to-transparent" />
+                          )}
+                          <h4 className="text-xl font-bold uppercase text-[#b89551]">
+                            {cert.code}
+                          </h4>
+                          <p className="mt-3 text-[0.95rem] leading-snug text-[#0f6b62]">
+                            {cert.title}
+                          </p>
+                          <div className="mt-4 flex flex-nowrap gap-6 text-[0.75rem] font-medium uppercase tracking-[0.04em] text-[#b89551]">
+                            <NavigationMenuLink asChild>
+                              <a href={cert.exploreHref} className="whitespace-nowrap transition-colors hover:text-[#8f671e]">
+                                Explore
+                              </a>
+                            </NavigationMenuLink>
+                            <NavigationMenuLink asChild>
+                              <a href={cert.storyGuideHref} className="whitespace-nowrap transition-colors hover:text-[#8f671e]">
+                                Story Guide
+                              </a>
+                            </NavigationMenuLink>
+                          </div>
+                        </section>
+                      ))}
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              ) : item.label === "LEARNING" ? (
+                <NavigationMenuItem key={item.label} className="relative">
+                  <NavigationMenuTrigger className={triggerClass}>
+                    {item.label}
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="absolute left-1/2 top-full mt-2 w-[min(56rem,calc(100vw-2rem))]! max-w-none! -translate-x-1/2 rounded-lg border bg-white p-6 shadow-lg">
                     <div className="grid min-w-0 gap-6 md:grid-cols-2 md:gap-x-10">
                       {learningColumns.map((column, columnIndex) => (
                         <div
@@ -318,18 +392,25 @@ export function GIHQSNavbar() {
                   <NavigationMenuTrigger className={triggerClass}>
                     {item.label}
                   </NavigationMenuTrigger>
-                  <NavigationMenuContent className="absolute top-full center-x-0 left-1/2 -translate-x-1/2 mt-2 rounded-lg border bg-white p-4 shadow-lg">
-                    <ul className="grid w-125 gap-3 p-4 md:grid-cols-2">
+                  <NavigationMenuContent className="absolute left-1/2 top-full mt-2 -translate-x-1/2 rounded-lg bg-white p-0 shadow-[0_18px_40px_rgba(26,95,74,0.12)]">
+                    <div className="relative w-72 pl-6 pr-3 py-2">
+                      <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#c0a062] to-transparent" />
+
+                      <ul className="space-y-2">
                         {item.children.map((child) => (
-                        <ListItem
-                            key={child.title}
-                            title={child.title}
-                            href={child.href}
-                        >
-                            {child.description}
-                        </ListItem>
+                          <li key={child.title}>
+                            <NavigationMenuLink asChild>
+                              <a
+                                href={child.href}
+                                className="block text-[0.95rem] font-medium leading-snug text-[#b89551] transition-colors hover:text-[#8f671e] hover:underline"
+                              >
+                                {child.title}
+                              </a>
+                            </NavigationMenuLink>
+                          </li>
                         ))}
-                    </ul>
+                      </ul>
+                    </div>
                     </NavigationMenuContent>
                 </NavigationMenuItem>
               ) : (

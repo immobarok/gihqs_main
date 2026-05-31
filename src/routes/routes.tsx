@@ -5,11 +5,11 @@ import { ROUTES } from "./routes.constants"
 import RootLayout       from "@/layouts/RootLayout"
 import PrivateRoute     from "./PrivateRoute"
 import DashboardLayout from "@/layouts/DashboardLayout"
-import HomePage from "@/pages/Home"
 import CoursesPage from "@/pages/Courses"
 import CourseDetailPage from "@/pages/CourseDetail"
 import DashboardPage from "@/pages/Dashboard"
 import NotFoundPage from "@/pages/NotFound"
+import HomePage from "@/pages/Home/Index"
 
 export const router = createBrowserRouter([
   {
