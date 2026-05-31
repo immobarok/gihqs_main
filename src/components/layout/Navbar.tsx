@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ChevronDown } from "lucide-react";
+import { UserRound } from "lucide-react";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -9,14 +9,14 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+// import {
+//   DropdownMenu,
+//   DropdownMenuContent,
+//   DropdownMenuItem,
+//   DropdownMenuSeparator,
+//   DropdownMenuTrigger,
+// } from "@/components/ui/dropdown-menu";
+// import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Logo from "@/assets/icons/MainLogo.svg?react";
@@ -28,11 +28,76 @@ interface NavChild {
   description?: string;
 }
 
+interface NavGroup {
+  heading: string;
+  items: { title: string; href: string }[];
+}
+
+interface LearningSection {
+  heading: string;
+  items: { title: string; href: string }[];
+}
+
+interface LearningColumn {
+  sections: LearningSection[];
+}
+
 interface NavItem {
   label: string;
   href?: string;
   children?: NavChild[];
+  groups?: NavGroup[];
 }
+
+const learningSections: LearningSection[] = [
+  {
+    heading: "Modules",
+    items: [
+      { title: "HEALTHCARE QUALITY IMPROVEMENT", href: "/learning/modules/healthcare-quality-improvement" },
+      { title: "Lean Healthcare", href: "/learning/modules/lean-healthcare" },
+      { title: "Patient Experience Excellence", href: "/learning/modules/patient-experience-excellence" },
+      { title: "Healthcare Intelligence & KPI", href: "/learning/modules/healthcare-intelligence-kpi" },
+      { title: "Value-Based Purchasing", href: "/learning/modules/value-based-purchasing" },
+      { title: "Value-Based Purchasing", href: "/learning/modules/value-based-purchasing-2" },
+    ],
+  },
+  {
+    heading: "Courses",
+    items: [
+      { title: "High-Reliability Healthcare Systems", href: "/learning/courses/high-reliability-healthcare-systems" },
+      { title: "Artificial Intelligence for Healthcare Quality & Safety", href: "/learning/courses/ai-for-healthcare-quality-safety" },
+      { title: "Healthcare Data Analytics & Performance Intelligence", href: "/learning/courses/healthcare-data-analytics-performance-intelligence" },
+      { title: "Accreditation Readiness & Survey Preparedness", href: "/learning/courses/accreditation-readiness-survey-preparedness" },
+      { title: "Value-Based Healthcare Strategy", href: "/learning/courses/value-based-healthcare-strategy" },
+    ],
+  },
+  {
+    heading: "Patient Safety & Risk Management",
+    items: [
+      { title: "Root Cause Analysis", href: "/learning/modules/root-cause-analysis" },
+      { title: "Healthcare FMEA", href: "/learning/modules/healthcare-fmea" },
+      { title: "Human Factors Engineering", href: "/learning/modules/human-factors-engineering" },
+      { title: "Just Culture in Healthcare", href: "/learning/modules/just-culture-in-healthcare" },
+    ],
+  },
+  {
+    heading: "Toolkits",
+    items: [
+      { title: "Hospital Quality Improvement Toolkit", href: "/learning/toolkits/hospital-quality-improvement-toolkit" },
+      { title: "Patient Safety Incident Investigation Toolkit", href: "/learning/toolkits/patient-safety-incident-investigation-toolkit" },
+      { title: "Root Cause Analysis Professional Toolkit", href: "/learning/toolkits/root-cause-analysis-professional-toolkit" },
+      { title: "AI Governance & Responsible AI Toolkit", href: "/learning/toolkits/ai-governance-responsible-ai-toolkit" },
+    ],
+  },
+];
+
+const learningColumns: LearningColumn[] = [
+  { sections: [learningSections[0], learningSections[2]] },
+  { sections: [learningSections[1], learningSections[3]] },
+];
+
+const learningVerticalBarClass = "absolute left-0 top-0 bottom-0 hidden w-px bg-gradient-to-b from-transparent via-[#c0a062] to-transparent md:block";
+const learningHorizontalBarClass = "absolute -top-3 left-0 h-px w-full bg-gradient-to-r from-transparent via-[#c0a062]/50 to-transparent";
 
 const navItems: NavItem[] = [
   {
@@ -45,11 +110,6 @@ const navItems: NavItem[] = [
   },
   {
     label: "LEARNING",
-    children: [
-      { title: "Online Courses", href: "/learning/courses",   description: "Self-paced quality & safety education" },
-      { title: "Webinars",       href: "/learning/webinars",  description: "Live and recorded sessions" },
-      { title: "Workshops",      href: "/learning/workshops", description: "Hands-on training programs" },
-    ],
   },
   {
     label: "ACCREDITATION",
@@ -68,10 +128,28 @@ const navItems: NavItem[] = [
   { label: "MEMBERSHIP", href: "/membership" },
   {
     label: "ABOUT",
-    children: [
-      { title: "Our Story",   href: "/about/story",      description: "Mission, vision, and values" },
-      { title: "Leadership",  href: "/about/leadership", description: "Board and executive team" },
-      { title: "Careers",     href: "/about/careers",    description: "Join our team" },
+    groups: [
+      {
+        heading: "GIHQS",
+        items: [
+          { title: "About the Institute", href: "/about/institute" },
+          { title: "Mission, Vision & Values", href: "/about/mission" },
+          { title: "Policies & Governance", href: "/about/policies" },
+        ],
+      },
+      {
+        heading: "Governance",
+        items: [
+          { title: "Strategic Advisory Board", href: "/about/advisory-board" },
+          { title: "Accreditation Review Panel", href: "/about/review-panel" },
+        ],
+      },
+      {
+        heading: "Connect",
+        items: [
+          { title: "Contact", href: "/contact" },
+        ],
+      },
     ],
   },
 ];
@@ -132,7 +210,110 @@ export function GIHQSNavbar() {
         <NavigationMenu className="hidden lg:flex" viewport={false}>
           <NavigationMenuList className="gap-1">
             {navItems.map((item) =>
-              item.children ? (
+              item.label === "LEARNING" ? (
+                <NavigationMenuItem key={item.label} className="relative">
+                  <NavigationMenuTrigger className={triggerClass}>
+                    {item.label}
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="absolute left-1/2 top-full mt-2 w-[min(56rem,calc(100vw-2rem))]! max-w-none! -translate-x-1/2 rounded-2xl border border-[#e8dcc2] bg-white p-6 shadow-[0_18px_40px_rgba(26,95,74,0.12)]">
+                    <div className="grid min-w-0 gap-6 md:grid-cols-2 md:gap-x-10">
+                      {learningColumns.map((column, columnIndex) => (
+                        <div
+                          key={columnIndex}
+                          className={cn(
+                            "relative min-w-0 space-y-6 pl-6",
+                            columnIndex === 1 && "md:pl-6"
+                          )}
+                        >
+                          <div
+                            className={cn(
+                              learningVerticalBarClass,
+                              columnIndex === 1 && "md:-left-3"
+                            )}
+                          />
+
+                          {column.sections.map((section, sectionIndex) => (
+                            <section key={section.heading} className="relative space-y-3 pb-5 last:pb-0">
+                              {sectionIndex > 0 && (
+                                <div className={learningHorizontalBarClass} />
+                              )}
+                              <h4 className={cn(
+                                "text-[0.9rem] font-bold uppercase tracking-[0.08em]",
+                                section.heading === "Patient Safety & Risk Management"
+                                  ? "text-black"
+                                  : "text-[#b89551]"
+                              )}>
+                                {section.heading}
+                              </h4>
+                              <ul className="space-y-3">
+                                {section.items.map((link, linkIndex) => {
+                                  const isHighlightedFirstItem = section.heading === "Modules" && linkIndex === 0;
+
+                                  return (
+                                    <li key={link.title}>
+                                      <NavigationMenuLink asChild>
+                                        <a
+                                          href={link.href}
+                                          className={cn(
+                                            "block text-[0.95rem] leading-snug transition-colors hover:text-[#145240] hover:underline",
+                                            isHighlightedFirstItem
+                                              ? "font-bold uppercase text-black hover:text-black"
+                                              : "font-medium text-[#1a5f4a]"
+                                          )}
+                                        >
+                                          {link.title}
+                                        </a>
+                                      </NavigationMenuLink>
+                                    </li>
+                                  );
+                                })}
+                              </ul>
+                            </section>
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              ) : item.groups ? (
+                <NavigationMenuItem key={item.label} className="relative">
+                  <NavigationMenuTrigger className={triggerClass}>
+                    {item.label}
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="absolute top-full center-x-0 left-1/2 -translate-x-1/2 mt-2 rounded-lg border bg-white p-6 shadow-lg">
+                    <div className="relative w-80 pl-6 space-y-6">
+                      {/* Left vertical bar - faded at ends */}
+                      <div className="absolute left-0 top-0 bottom-0 w-px bg-linear-to-b from-transparent via-[#c0a062] to-transparent" />
+                      
+                      {item.groups.map((group, idx) => (
+                        <div key={group.heading} className="relative space-y-4">
+                          {/* Horizontal divider - faded at ends */}
+                          {idx > 0 && (
+                            <div className="absolute -top-3 left-0 h-px w-full bg-linear-to-r from-transparent via-[#c0a062]/50 to-transparent" />
+                          )}
+                          <h4 className="text-xl font-bold text-[#b89551]">
+                            {group.heading}
+                          </h4>
+                          <ul className="space-y-3">
+                            {group.items.map((link) => (
+                              <li key={link.title}>
+                                <NavigationMenuLink asChild>
+                                  <a
+                                    href={link.href}
+                                    className="text-[0.95rem] font-medium text-[#1a5f4a] transition-colors hover:text-[#145240] hover:underline"
+                                  >
+                                    {link.title}
+                                  </a>
+                                </NavigationMenuLink>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              ) : item.children ? (
                 <NavigationMenuItem key={item.label} className="relative">
                   <NavigationMenuTrigger className={triggerClass}>
                     {item.label}
@@ -166,6 +347,7 @@ export function GIHQSNavbar() {
         </NavigationMenu>
 
         {/* Right — User Profile */}
+        {/*
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
@@ -192,6 +374,15 @@ export function GIHQSNavbar() {
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
+        */}
+
+        <Button
+          variant="ghost"
+          className="h-10 gap-2 rounded-full border border-[#1a5f4a]/20 bg-[#1a5f4a] px-6 text-white hover:bg-[#145240] hover:text-white focus-visible:ring-[#1a5f4a]"
+        >
+          <span className="text-sm font-medium">Log In</span>
+          <UserRound className="h-4 w-4" />
+        </Button>
 
       </div>
     </header>
