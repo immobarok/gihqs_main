@@ -48,11 +48,11 @@ export default function ServicesAndPathways() {
         
         {/* Section Header with split horizontal lines */}
         <div className="flex items-center justify-center mb-10 w-full">
-          <div className="h-[1px] bg-[#d1dddb] flex-grow max-w-xs md:max-w-md"></div>
+          <div className="h-[1px] bg-[#d1dddb] grow max-w-xs md:max-w-md"></div>
           <span className="text-[#5b8276] text-xs font-semibold tracking-[0.25em] mx-4 whitespace-nowrap uppercase">
             Services & Pathways
           </span>
-          <div className="h-[1px] bg-[#d1dddb] flex-grow max-w-xs md:max-w-md"></div>
+          <div className="h-[1px] bg-[#d1dddb] grow max-w-xs md:max-w-md"></div>
         </div>
 
         {/* Main Grid Container - sharp corners (no rounded classes) */}

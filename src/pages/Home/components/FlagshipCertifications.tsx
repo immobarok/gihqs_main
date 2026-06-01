@@ -52,7 +52,7 @@ const certificationsData: CertificationCard[] = [
 
 export default function FlagshipCertifications() {
   return (
-    <div className="relative w-full bg-[#f8faf9] px-4 py-16 font-sans overflow-hidden">
+    <div className="relative w-full bg-[#f8faf9] px-0 py-16 font-sans overflow-hidden">
         {/* Section Header with thin horizontal lines */}
         <div className="relative z-10 flex items-center justify-center mb-14 w-full">
           <div className="h-px bg-[#d1dddb] grow max-w-xs md:max-w-md"></div>
@@ -63,7 +63,7 @@ export default function FlagshipCertifications() {
         </div>
 
         {/* Deep Green Outer Container Section */}
-        <div className="bg-[#0F2F26] rounded-[24px] p-8 md:p-12 lg:p-16 relative z-10 overflow-hidden shadow-xl">
+        <div className="bg-[#0F2F26] rounded-[24px] p-4 md:p-12 lg:p-16 relative z-10 overflow-hidden shadow-xl">
           <div
             className="pointer-events-none absolute inset-y-0 right-0 w-1/2 blur-3xl opacity-85"
             style={{

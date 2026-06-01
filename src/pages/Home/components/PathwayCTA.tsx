@@ -30,7 +30,7 @@ const pathwayOptions: PathwayOption[] = [
 
 export default function PathwayCTA() {
   return (
-    <div className="w-full bg-background px-6 py-16 ">
+    <div className="w-full bg-background px-0 py-16 ">
         
         <div 
           className="grid grid-cols-1 lg:grid-cols-12 bg-primary relative overflow-hidden shadow-lg rounded-[24px] border-3 border-[#F0D070]"
