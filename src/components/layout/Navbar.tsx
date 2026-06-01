@@ -20,6 +20,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Logo from "@/assets/icons/MainLogo.svg?react";
+import { Link } from "react-router";
 
 
 interface NavChild {
@@ -227,7 +228,7 @@ const triggerClass = cn(
 
 export function GIHQSNavbar() {
   return (
-    <header className="sticky top-0 z-50 w-full">
+    <header className="sticky top-0 z-50 w-full bg-[#F7FAF9]">
       <div className="mx-auto flex h-28.5 container items-center justify-between px-4 sm:px-6 lg:px-8">
 
         <div className="shrink-0 w-32 sm:w-40 md:w-auto">
@@ -457,13 +458,15 @@ export function GIHQSNavbar() {
         </DropdownMenu>
         */}
 
-        <Button
-          variant="ghost"
-          className="h-10 gap-2 rounded-full border border-[#1a5f4a]/20 bg-[#1a5f4a] px-6 text-white hover:bg-[#145240] hover:text-white focus-visible:ring-[#1a5f4a]"
-        >
-          <span className="text-sm font-medium">Log In</span>
-          <UserRound className="h-4 w-4" />
-        </Button>
+        <Link to="/login">
+          <Button
+            variant="ghost"
+            className="h-10 gap-2 rounded-full border border-[#1a5f4a]/20 bg-[#1a5f4a] px-6 text-white hover:bg-[#145240] hover:text-white focus-visible:ring-[#1a5f4a]"
+          >
+            <span className="text-sm font-medium">Log In</span>
+            <UserRound className="h-4 w-4" />
+          </Button>
+        </Link>
 
       </div>
     </header>

@@ -10,12 +10,15 @@ import CourseDetailPage from "@/pages/CourseDetail"
 import DashboardPage from "@/pages/Dashboard"
 import NotFoundPage from "@/pages/NotFound"
 import HomePage from "@/pages/Home/Index"
+import LoginPage from "@/pages/Login/Login"
+import SignupPage from "@/pages/Signup/Signup"
 
 export const router = createBrowserRouter([
+  { path: ROUTES.LOGIN,  element: <LoginPage /> },
+  { path: ROUTES.SIGNUP, element: <SignupPage /> },
   {
     element: <RootLayout />,
     children: [
-
       { path: ROUTES.HOME,          element: <HomePage /> },
       { path: ROUTES.COURSES,       element: <CoursesPage /> },
       { path: ROUTES.COURSE_DETAIL, element: <CourseDetailPage /> },
