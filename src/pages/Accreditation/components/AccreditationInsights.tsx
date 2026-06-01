@@ -59,7 +59,7 @@ export default function AccreditationInsights() {
               </p>
             </article>
 
-            <article className="rounded-lg border border-[#D4AA3A] bg-white p-7 shadow-[0_16px_36px_rgba(15,47,38,0.08)]">
+            <article className="rounded-lg border-l-3 border-[#D4AA3A] bg-white p-7 shadow-[0_16px_36px_rgba(15,47,38,0.08)]">
               <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#C39A31]">
                 Insight
               </p>
