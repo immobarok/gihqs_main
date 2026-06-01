@@ -9,6 +9,11 @@ import CoursesPage from "@/pages/Courses"
 import CourseDetailPage from "@/pages/CourseDetail"
 import AccreditationPage from "@/pages/Accreditation/Index"
 import AboutInstitutePage from "@/pages/About/Institute/Index"
+import MissionVisionValuesPage from "@/pages/About/Mission/Index"
+import PoliciesGovernancePage from "@/pages/About/Policies/Index"
+import StrategicAdvisoryBoardPage from "@/pages/About/AdvisoryBoard/Index"
+import AccreditationReviewPanelPage from "@/pages/About/ReviewPanel/Index"
+import ContactPage from "@/pages/Contact/Index"
 import DashboardPage from "@/pages/Dashboard"
 import NotFoundPage from "@/pages/NotFound"
 import HomePage from "@/pages/Home/Index"
@@ -25,6 +30,11 @@ export const router = createBrowserRouter([
       { path: ROUTES.HOME,          element: <HomePage /> },
       { path: ROUTES.ACCREDITATION, element: <AccreditationPage /> },
       { path: ROUTES.ABOUT_INSTITUTE, element: <AboutInstitutePage /> },
+      { path: ROUTES.ABOUT_MISSION, element: <MissionVisionValuesPage /> },
+      { path: ROUTES.ABOUT_POLICIES, element: <PoliciesGovernancePage /> },
+      { path: ROUTES.ABOUT_ADVISORY, element: <StrategicAdvisoryBoardPage /> },
+      { path: ROUTES.ABOUT_REVIEW, element: <AccreditationReviewPanelPage /> },
+      { path: ROUTES.CONTACT, element: <ContactPage /> },
       { path: ROUTES.MEMBERSHIP,    element: <MembershipPage /> },
       { path: ROUTES.COURSES,       element: <CoursesPage /> },
       { path: ROUTES.COURSE_DETAIL, element: <CourseDetailPage /> },
