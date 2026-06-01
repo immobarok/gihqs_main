@@ -11,6 +11,7 @@ import AccreditationPage from "@/pages/Accreditation/Index"
 import DashboardPage from "@/pages/Dashboard"
 import NotFoundPage from "@/pages/NotFound"
 import HomePage from "@/pages/Home/Index"
+import MembershipPage from "@/pages/Membership/Index"
 import LoginPage from "@/pages/Login/Login"
 import SignupPage from "@/pages/Signup/Signup"
 
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
     children: [
       { path: ROUTES.HOME,          element: <HomePage /> },
       { path: ROUTES.ACCREDITATION, element: <AccreditationPage /> },
+      { path: ROUTES.MEMBERSHIP,    element: <MembershipPage /> },
       { path: ROUTES.COURSES,       element: <CoursesPage /> },
       { path: ROUTES.COURSE_DETAIL, element: <CourseDetailPage /> },
       {

@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 export default function AccreditationCTA() {
   return (
-    <section className="container mx-auto px-4 pb-20 sm:px-6 lg:px-8">
+    <section className="container mx-auto px-4 py-10 md:py-15 sm:px-6 lg:px-8">
       <div
         className="rounded-3xl px-6 py-14 text-center md:px-10"
         style={{
