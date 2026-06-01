@@ -1,6 +1,8 @@
 
+import AccreditationDomains from "./components/AccreditationDomains";
 import AccreditationEligibility from "./components/AccreditationEligibility";
 import AccreditationHero from "./components/AccreditationHero";
+import AccreditationInsights from "./components/AccreditationInsights";
 import AccreditationProcess from "./components/AccreditationProcess";
 
 const Accreditation = () => {
@@ -9,6 +11,8 @@ const Accreditation = () => {
       <AccreditationHero />
       <AccreditationEligibility />
       <AccreditationProcess />
+      <AccreditationDomains />
+      <AccreditationInsights />
     </main>
   );
 };
