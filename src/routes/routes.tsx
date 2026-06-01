@@ -8,6 +8,7 @@ import DashboardLayout from "@/layouts/DashboardLayout"
 import CoursesPage from "@/pages/Courses"
 import CourseDetailPage from "@/pages/CourseDetail"
 import AccreditationPage from "@/pages/Accreditation/Index"
+import AboutInstitutePage from "@/pages/About/Institute/Index"
 import DashboardPage from "@/pages/Dashboard"
 import NotFoundPage from "@/pages/NotFound"
 import HomePage from "@/pages/Home/Index"
@@ -23,6 +24,7 @@ export const router = createBrowserRouter([
     children: [
       { path: ROUTES.HOME,          element: <HomePage /> },
       { path: ROUTES.ACCREDITATION, element: <AccreditationPage /> },
+      { path: ROUTES.ABOUT_INSTITUTE, element: <AboutInstitutePage /> },
       { path: ROUTES.MEMBERSHIP,    element: <MembershipPage /> },
       { path: ROUTES.COURSES,       element: <CoursesPage /> },
       { path: ROUTES.COURSE_DETAIL, element: <CourseDetailPage /> },

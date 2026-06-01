@@ -43,8 +43,8 @@ const servicesData: ServiceCardProps[] = [
 
 export default function ServicesAndPathways() {
   return (
-    <div className="w-full bg-[#f8faf9] px-6 py-16 font-sans">
-      <div className="max-w-7xl mx-auto">
+    <div className="w-full bg-[#f8faf9] py-16 font-sans">
+      <div className="container mx-auto">
         
         {/* Section Header with split horizontal lines */}
         <div className="flex items-center justify-center mb-10 w-full">
