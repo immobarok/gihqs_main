@@ -231,9 +231,13 @@ export function GIHQSNavbar() {
     <header className="sticky top-0 z-50 w-full bg-[#F7FAF9]">
       <div className="mx-auto flex h-28.5 container items-center justify-between px-4 sm:px-6 lg:px-8">
 
-        <div className="shrink-0 w-32 sm:w-40 md:w-auto">
+        <Link
+          to="/"
+          aria-label="Go to home"
+          className="shrink-0 w-32 sm:w-40 md:w-auto"
+        >
           <Logo className="w-full h-auto md:w-[initial]" />
-        </div>
+        </Link>
 
         {/* Center Navigation */}
         <NavigationMenu className="hidden lg:flex" viewport={false}>
