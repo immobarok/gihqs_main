@@ -1,4 +1,3 @@
-import React from "react";
 import { ArrowRight } from "lucide-react";
 
 // Types for our service cards data
@@ -57,7 +56,7 @@ export default function ServicesAndPathways() {
 
         {/* Main Grid Container - sharp corners (no rounded classes) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border border-[#d1dddb] bg-white overflow-hidden divide-y divide-[#d1dddb] md:divide-y-0 md:divide-x">
-          {servicesData.map((service, index) => (
+          {servicesData.map((service) => (
             <div
               key={service.number}
               className="flex flex-col justify-between p-8 min-h-[420px] bg-[#fdfefe] transition-colors duration-200 hover:bg-[#f4f7f6]"

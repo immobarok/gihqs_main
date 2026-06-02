@@ -8,8 +8,8 @@ const labelClasses = "text-sm font-medium text-[#102B24]";
 export default function ContactPage() {
   return (
     <main className="bg-[#F7FAF9] container mx-auto px-4 py-8 sm:px-6 lg:px-8">
-      <section className="grid gap-10 lg:grid-cols-[1fr_0.95fr] lg:items-start">
-        <div className="py-3">
+      <section className="grid items-stretch gap-10 lg:grid-cols-[1fr_0.95fr]">
+        <div className="h-full py-3">
           <h1 className="font-serif text-4xl font-semibold leading-tight text-[#102B24] sm:text-[2.7rem]">
             Contact GIHQS
           </h1>
@@ -121,7 +121,7 @@ export default function ContactPage() {
         </div>
 
         <aside
-          className="rounded-[24px] px-8 py-10 text-white shadow-[0_18px_42px_rgba(15,47,38,0.14)] sm:px-12 lg:min-h-[690px]"
+          className="h-full rounded-[24px] px-8 py-10 text-white shadow-[0_18px_42px_rgba(15,47,38,0.14)] sm:px-12 lg:min-h-[690px]"
           style={{
             background:
               "radial-gradient(79.7% 88.45% at 47.59% -5.47%, rgba(212, 170, 58, 0.20) 0%, rgba(12, 42, 31, 0.20) 100%), linear-gradient(115deg, #0F2F26 0%, #133A2F 56%, #0B241D 100%), #0F2F26",
