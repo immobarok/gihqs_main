@@ -1,3 +1,5 @@
+import SectionTitle from "./SectionTitle";
+
 const domains = [
   {
     number: "1",
@@ -75,15 +77,9 @@ export default function AccreditationDomains() {
   return (
     <section className="container mx-auto px-4 py-14 sm:px-6 lg:px-8">
       <div className="space-y-10">
-        <div className="mx-auto max-w-3xl space-y-3 text-center">
-          <div className="flex items-center justify-center gap-3">
-            <span className="h-px w-24 bg-[#C8DAD4]" />
-            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.24em] text-[#4B9A84]">
-              Insights
-            </p>
-            <span className="h-px w-24 bg-[#C8DAD4]" />
-          </div>
+        <SectionTitle label="Standards Domains" />
 
+        <div className="mx-auto max-w-3xl space-y-3 text-center">
           <h2 className="text-3xl font-medium leading-tight text-[#0F2F26] md:text-4xl">
             Accreditation{" "}
             <span className="font-serif italic text-[#D4AA3A]">
