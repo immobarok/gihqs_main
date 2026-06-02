@@ -38,6 +38,9 @@ const pathwayOptions = [
   },
 ];
 
+const optionButtonClasses =
+  "group h-auto min-h-14 w-full justify-between whitespace-normal rounded-xl border-[#DDE8E4] bg-white px-4 py-4 text-left text-sm font-semibold leading-snug text-[#0F2F26] transition-all hover:border-[#D4AA3A]/50 hover:bg-white md:px-5 md:text-base";
+
 export default function Hero() {
   const [currentStep, setCurrentStep] = React.useState(1);
   const [selectedAudience, setSelectedAudience] = React.useState("");
@@ -63,7 +66,7 @@ export default function Hero() {
       />
 
       <div className="relative z-10 w-full space-y-8 md:w-1/2">
-        <div className="inline-flex items-center rounded-full border border-[rgba(240,208,112,0.72)] bg-[rgba(240,208,112,0.10)] px-3.5 py-1.75 text-xs font-semibold uppercase leading-none tracking-wider text-[#D4AA3A]">
+        <div className="inline-flex max-w-full items-center rounded-full border border-[rgba(240,208,112,0.72)] bg-[rgba(240,208,112,0.10)] px-3.5 py-2 text-xs font-semibold uppercase leading-tight tracking-wider text-[#D4AA3A]">
           GIHQS Professional Pathways
         </div>
 
@@ -84,14 +87,16 @@ export default function Hero() {
 
         <div className="space-y-2">
           <div className="flex gap-2">
-            {Array.from({ length: totalSteps }, (_, index) => index + 1).map((step) => (
-              <div
-                key={step}
-                className={`h-1.5 w-8 rounded-full transition-all ${
-                  step === currentStep ? "bg-[#D4AA3A]" : "bg-[#1A3C32]"
-                }`}
-              />
-            ))}
+            {Array.from({ length: totalSteps }, (_, index) => index + 1).map(
+              (step) => (
+                <div
+                  key={step}
+                  className={`h-1.5 w-8 rounded-full transition-all ${
+                    step === currentStep ? "bg-[#D4AA3A]" : "bg-[#1A3C32]"
+                  }`}
+                />
+              )
+            )}
           </div>
           <p className="text-xs font-medium tracking-wide text-[#8FA89F]">
             Step {currentStep} of {totalSteps}
@@ -102,18 +107,18 @@ export default function Hero() {
           {tags.map((tag) => (
             <span
               key={tag}
-              className="cursor-default rounded-full border border-[#1A3C32] px-4 py-2 text-xs font-medium text-[#8FA89F] transition-colors hover:border-[#D4AA3A]/40 hover:text-[#D4AA3A] md:text-sm"
+              className="min-w-0 max-w-full cursor-default rounded-full border border-[#1A3C32] px-4 py-2 text-xs font-medium leading-tight text-[#8FA89F] transition-colors hover:border-[#D4AA3A]/40 hover:text-[#D4AA3A] md:text-sm"
             >
               {tag}
             </span>
           ))}
         </div>
-      </div>
+        </div>
 
       <div className="relative z-10 flex w-full items-center justify-center md:w-1/2">
-        <div className="w-full max-w-xl overflow-hidden rounded-[24px] bg-[#F4F8F7] p-6 shadow-2xl md:p-8">
+        <div className="w-full max-w-xl overflow-hidden rounded-[24px] bg-[#F4F8F7] p-5 shadow-2xl sm:p-6 md:p-8">
           <div className="space-y-3">
-            <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#6B7F78]">
+            <p className="text-xs font-bold uppercase leading-tight tracking-[0.15em] text-[#6B7F78]">
               Begin Your Pathway
             </p>
             <h2 className="text-2xl font-semibold leading-snug text-[#0F2F26] md:text-3xl">
@@ -127,14 +132,14 @@ export default function Hero() {
               <div className="space-y-1 text-sm leading-relaxed text-[#4A5F57]">
                 <p>
                   Role:{" "}
-                  <span className="font-semibold text-[#0F2F26]">
+                  <span className="break-words font-semibold text-[#0F2F26]">
                     {selectedAudience}
                   </span>
                 </p>
                 {selectedInterest && (
                   <p>
                     Interest:{" "}
-                    <span className="font-semibold text-[#0F2F26]">
+                    <span className="break-words font-semibold text-[#0F2F26]">
                       {selectedInterest}
                     </span>
                   </p>
@@ -164,14 +169,16 @@ export default function Hero() {
                 <Button
                   key={option}
                   variant="outline"
-                  className="group h-auto w-full justify-between rounded-xl border-[#DDE8E4] bg-white px-5 py-4 text-left text-sm font-semibold text-[#0F2F26] transition-all hover:border-[#D4AA3A]/50 hover:bg-white md:text-base"
+                  className={optionButtonClasses}
                   onClick={() => {
                     setSelectedAudience(option);
                     setCurrentStep(2);
                   }}
                   type="button"
                 >
-                  <span>{option}</span>
+                  <span className="min-w-0 flex-1 whitespace-normal break-words">
+                    {option}
+                  </span>
                   <ChevronRight className="ml-4 h-4 w-4 shrink-0 text-[#4A6B5F] transition-colors group-hover:text-[#D4AA3A]" />
                 </Button>
               ))}
@@ -181,14 +188,16 @@ export default function Hero() {
                 <Button
                   key={option}
                   variant="outline"
-                  className="group h-auto w-full justify-between rounded-xl border-[#DDE8E4] bg-white px-5 py-4 text-left text-sm font-semibold text-[#0F2F26] transition-all hover:border-[#D4AA3A]/50 hover:bg-white md:text-base"
+                  className={optionButtonClasses}
                   onClick={() => {
                     setSelectedInterest(option);
                     setCurrentStep(3);
                   }}
                   type="button"
                 >
-                  <span>{option}</span>
+                  <span className="min-w-0 flex-1 whitespace-normal break-words">
+                    {option}
+                  </span>
                   <ChevronRight className="ml-4 h-4 w-4 shrink-0 text-[#4A6B5F] transition-colors group-hover:text-[#D4AA3A]" />
                 </Button>
               ))}
@@ -198,14 +207,16 @@ export default function Hero() {
                 <Button
                   key={option}
                   variant="outline"
-                  className="group h-auto w-full justify-between rounded-xl border-[#DDE8E4] bg-white px-5 py-4 text-left text-sm font-semibold text-[#0F2F26] transition-all hover:border-[#D4AA3A]/50 hover:bg-white md:text-base"
+                  className={optionButtonClasses}
                   onClick={() => {
                     setSelectedProceed(option);
                     setCurrentStep(4);
                   }}
                   type="button"
                 >
-                  <span>{option}</span>
+                  <span className="min-w-0 flex-1 whitespace-normal break-words">
+                    {option}
+                  </span>
                   <ChevronRight className="ml-4 h-4 w-4 shrink-0 text-[#4A6B5F] transition-colors group-hover:text-[#D4AA3A]" />
                 </Button>
               ))}
@@ -240,12 +251,12 @@ export default function Hero() {
                       }
                       className={
                         option.label === "Apply for Accreditation"
-                          ? "h-auto flex-1 rounded-full bg-[#0F4A3B] px-6 py-4 text-sm font-semibold text-white hover:bg-[#0A3328]"
-                          : "h-auto flex-1 rounded-full border-[#E5EDE9] px-6 py-4 text-sm font-semibold text-[#0F4A3B] hover:bg-[#F4F8F7]"
+                          ? "h-auto min-h-12 flex-1 whitespace-normal rounded-full bg-[#0F4A3B] px-5 py-3 text-sm font-semibold leading-tight text-white hover:bg-[#0A3328]"
+                          : "h-auto min-h-12 flex-1 whitespace-normal rounded-full border-[#E5EDE9] px-5 py-3 text-sm font-semibold leading-tight text-[#0F4A3B] hover:bg-[#F4F8F7]"
                       }
                     >
                       <Link to={option.href}>
-                        <span>{option.label}</span>
+                        <span className="break-words">{option.label}</span>
                       </Link>
                     </Button>
                   ))}
