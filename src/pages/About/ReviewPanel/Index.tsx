@@ -1,8 +1,10 @@
 const reviewResponsibilities = [
-  "Review accreditation submissions against published standards.",
-  "Evaluate evidence for completeness, credibility, and alignment.",
-  "Support fair, transparent, and defensible accreditation decisions.",
-  "Identify conditions, recommendations, or commendations where appropriate.",
+  "Review accreditation applications and supporting documentation",
+  "Evaluate compliance with GIHQS accreditation standards",
+  "Assess program governance, curriculum, and quality systems",
+  "Review evidence of learning outcomes and program impact",
+  "Provide technical review recommendations",
+  "Support accreditation decision-making processes",
 ];
 
 export default function AccreditationReviewPanel() {
@@ -34,51 +36,126 @@ export default function AccreditationReviewPanel() {
         </div>
       </section>
 
-      <section className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
-        <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-          <article className="rounded-2xl border border-[#DDE8E4] bg-white p-7">
-            <div className="w-fit rounded-full bg-[#FBF4E2] px-3 py-1.5 text-xs font-semibold uppercase text-[#C39A31]">
-              Function
-            </div>
-            <h2 className="mt-5 text-3xl font-bold text-black">
-              Role of the Panel
+      <section className="container mx-auto space-y-6 px-4 pb-8 pt-4 sm:px-6 lg:px-8">
+        <article className="rounded-[18px] border border-[#DDE8E4] bg-white px-6 py-7 shadow-[0_10px_28px_rgba(15,47,38,0.03)] sm:px-7">
+          <div className="w-fit rounded-full bg-[#FBF4E2] px-3 py-1.5 text-[0.64rem] font-semibold uppercase tracking-[0.08em] text-[#C39A31]">
+            Purpose
+          </div>
+          <h2 className="mt-5 text-3xl font-bold leading-tight text-[#102B24] sm:text-[2.15rem]">
+            Role of the Review Panel
+          </h2>
+          <p className="mt-4 max-w-6xl text-sm leading-6 text-[#48655D]">
+            The Accreditation Review Panel supports the integrity and
+            credibility of GIHQS accreditation activities through independent
+            technical evaluation of submitted applications, supporting evidence,
+            and program documentation.
+          </p>
+
+          <h3 className="mt-7 text-lg font-bold uppercase tracking-[0.02em] text-[#D0A13A]">
+            Evaluation Responsibilities
+          </h3>
+          <ul className="mt-4 space-y-3 text-sm leading-5 text-[#48655D]">
+            {reviewResponsibilities.map((item) => (
+              <li key={item} className="flex gap-3">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#D0A13A]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+
+        <article className="rounded-[18px] border border-[#DDE8E4] bg-white px-6 py-6 shadow-[0_10px_28px_rgba(15,47,38,0.03)] sm:px-7">
+          <h2 className="text-2xl font-bold leading-tight text-[#D0A13A]">
+            Panel Formation in Progress
+          </h2>
+          <p className="mt-4 max-w-6xl text-sm leading-6 text-[#48655D]">
+            The GIHQS Accreditation Review Panel is currently being established.
+            Appointments are underway with several experienced professionals in
+            healthcare quality, patient safety, accreditation, and healthcare
+            leadership. Additional panel members will be announced as
+            appointments are finalized.
+          </p>
+        </article>
+
+        <div className="grid gap-6 lg:grid-cols-2">
+          <article className="rounded-[18px] border border-[#DDE8E4] bg-white px-6 py-7 shadow-[0_10px_28px_rgba(15,47,38,0.03)] sm:px-7">
+            <h2 className="text-2xl font-bold leading-tight text-[#D0A13A]">
+              Appointment Terms
             </h2>
-            <p className="mt-4 text-sm leading-relaxed text-[#4F6A61]">
-              The panel reviews applications from organizations seeking GIHQS
-              accreditation and evaluates whether submitted evidence demonstrates
-              alignment with the Institute's accreditation standards.
-            </p>
-            <div className="mt-6 grid gap-3">
-              {reviewResponsibilities.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-xl bg-[#EEF6F3] px-5 py-4 text-sm font-semibold text-[#10372D]"
-                >
-                  {item}
-                </div>
-              ))}
+            <div className="mt-4 space-y-4 text-sm leading-6 text-[#48655D]">
+              <p>
+                Members of the Accreditation Review Panel are appointed by GIHQS
+                based on demonstrated expertise in accreditation, healthcare
+                quality, regulation, education, or evaluation.
+              </p>
+              <p>
+                Appointments are typically for a renewable{" "}
+                <span className="font-bold text-[#102B24]">two-year term</span>.
+              </p>
+              <p>
+                Panel members may participate in application review,
+                documentation evaluation, peer consultation, and accreditation
+                recommendation activities.
+              </p>
             </div>
           </article>
 
-          <article className="rounded-2xl border border-[#DDE8E4] bg-white p-7">
-            <h2 className="text-2xl font-bold text-[#D4AA3A]">
-              Independence & Impartiality
+          <article className="rounded-[18px] border border-[#DDE8E4] bg-white px-6 py-7 shadow-[0_10px_28px_rgba(15,47,38,0.03)] sm:px-7">
+            <h2 className="text-2xl font-bold leading-tight text-[#D0A13A]">
+              Conflict of Interest
             </h2>
-            <p className="mt-4 text-sm leading-relaxed text-[#4F6A61]">
-              Reviewers are expected to maintain impartiality, protect
-              confidentiality, and disclose conflicts of interest before
-              participating in any evaluation activity.
-            </p>
-            <h2 className="mt-8 text-2xl font-bold text-[#D4AA3A]">
-              Formation in Progress
-            </h2>
-            <p className="mt-4 text-sm leading-relaxed text-[#4F6A61]">
-              The GIHQS Accreditation Review Panel is being established with
-              qualified professionals experienced in quality, safety,
-              accreditation, education, and evaluation.
-            </p>
+            <div className="mt-4 space-y-4 text-sm leading-6 text-[#48655D]">
+              <p>
+                GIHQS is committed to maintaining impartiality and integrity in
+                its accreditation processes.
+              </p>
+              <p>
+                Panel members are expected to disclose any actual, potential, or
+                perceived conflicts of interest that may influence or appear to
+                influence their independent judgment.
+              </p>
+              <p>
+                Where appropriate, GIHQS may request formal declarations of
+                interest and may restrict participation in specific reviews to
+                protect the integrity of accreditation decisions.
+              </p>
+            </div>
           </article>
         </div>
+
+        <article className="rounded-[18px] border border-[#DDE8E4] bg-white px-6 py-7 shadow-[0_10px_28px_rgba(15,47,38,0.03)] sm:px-7">
+          <h2 className="text-2xl font-bold leading-tight text-[#D0A13A]">
+            Expressions of Interest
+          </h2>
+          <div className="mt-4 space-y-4 text-sm leading-6 text-[#48655D]">
+            <p>
+              Experienced professionals with expertise in healthcare
+              accreditation, standards development, quality improvement, clinical
+              governance, regulatory oversight, or program evaluation who are
+              interested in contributing to the Accreditation Review Panel may
+              contact GIHQS.
+            </p>
+            <p>
+              To express interest, please send a{" "}
+              <span className="font-bold text-[#102B24]">current CV</span> and
+              a{" "}
+              <span className="font-bold text-[#102B24]">
+                short professional biography
+              </span>{" "}
+              to{" "}
+              <a
+                className="font-bold text-[#102B24]"
+                href="mailto:info@gihqs.com"
+              >
+                info@gihqs.com
+              </a>
+            </p>
+            <p>
+              Additional appointments will be announced as the panel is
+              finalized.
+            </p>
+          </div>
+        </article>
       </section>
     </main>
   );
